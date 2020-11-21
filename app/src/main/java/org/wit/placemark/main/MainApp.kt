@@ -8,7 +8,6 @@ import org.wit.placemark.models.PlacemarkModel
 
 class MainApp : Application(), AnkoLogger {
 
-//  val placemarks = ArrayList<PlacemarkModel>()
   val placemarks = PlacemarkMemStore()
 
   override fun onCreate() {
