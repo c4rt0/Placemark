@@ -44,7 +44,7 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item?.itemId) {
+    when (item.itemId) {
       R.id.item_add -> startActivityForResult<PlacemarkActivity>(0)
     }
     return super.onOptionsItemSelected(item)

@@ -1,6 +1,7 @@
 package org.wit.placemark.models
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -40,7 +41,21 @@ class PlacemarkJSONStore : PlacemarkStore, AnkoLogger {
 
 
   override fun update(placemark: PlacemarkModel) {
-    // todo
+    placemarks.find {it.id == placemark.id}.apply {
+      this?.title = placemark.title
+      this?.description = placemark.description
+      this?.image = placemark.image
+      this?.lat = placemark.lat
+      this?.lng = placemark.lng
+      this?.zoom = placemark.zoom
+    }
+    serialize()
+  }
+
+  override fun delete(placemark: PlacemarkModel) {
+    //placemarks.remove(placemark)
+    placemarks.remove(placemarks.find {it.id == placemark.id})
+    serialize()
   }
 
   private fun serialize() {
