@@ -20,12 +20,22 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_placemark_list)
     app = application as MainApp
+
     toolbar.title = title
     setSupportActionBar(toolbar)
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll(), this)
+    loadPlacemarks()
+  }
+
+  private fun loadPlacemarks() {
+    showPlacemarks(app.placemarks.findAll())
+  }
+
+  fun showPlacemarks (placemarks: List<PlacemarkModel>) {
+    recyclerView.adapter = PlacemarkAdapter(placemarks, this)
+    recyclerView.adapter?.notifyDataSetChanged()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -45,7 +55,7 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    recyclerView.adapter?.notifyDataSetChanged()
+    loadPlacemarks()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }
