@@ -40,7 +40,8 @@ class PlacemarkAdapter constructor(
     fun bind(placemark: PlacemarkModel, listener: PlacemarkListener) {
       itemView.placemarkTitle.text = placemark.title
       itemView.description.text = placemark.description
-      itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, placemark.image))
+      if(placemark.image.size>0)
+        itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, placemark.image[0]))
       itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
     }
   }

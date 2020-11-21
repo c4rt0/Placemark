@@ -85,6 +85,11 @@
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/ic_launcher"/>
 
+        <ImageView
+            android:id="@+id/placemarkImage2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/placemarkLocation"
             android:layout_width="match_parent"

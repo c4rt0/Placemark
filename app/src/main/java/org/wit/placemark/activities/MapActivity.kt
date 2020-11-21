@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,6 +29,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
       .findFragmentById(R.id.map) as SupportMapFragment
     mapFragment.getMapAsync(this)
   }
+
+
 
   override fun onMapReady(googleMap: GoogleMap) {
     map = googleMap
