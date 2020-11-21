@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_placemark_list.*
 import kotlinx.android.synthetic.main.card_placemark.view.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.PlacemarkModel
 
-class PlacemarkListActivity : AppCompatActivity() {
+class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
+  override fun onPlacemarkClick(placemark: PlacemarkModel) {
+    startActivityForResult(intentFor<PlacemarkActivity>().putExtra("placemark_edit", placemark), 0)
+  }
 
   lateinit var app: MainApp
 
@@ -25,7 +29,9 @@ class PlacemarkListActivity : AppCompatActivity() {
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = PlacemarkAdapter(app.placemarks)
+//    recyclerView.adapter = PlacemarkAdapter(app.placemarks)
+//    recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll())
+    recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll(), this)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -33,7 +39,7 @@ class PlacemarkListActivity : AppCompatActivity() {
     return super.onCreateOptionsMenu(menu)
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       R.id.item_add -> startActivityForResult<PlacemarkActivity>(0)
     }
@@ -41,24 +47,38 @@ class PlacemarkListActivity : AppCompatActivity() {
   }
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>) : RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
+interface PlacemarkListener {
+  fun onPlacemarkClick(placemark: PlacemarkModel)
+}
+
+class PlacemarkAdapter constructor(
+  private var placemarks: List<PlacemarkModel>,
+  private val listener: PlacemarkListener
+) : RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-    return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_placemark, parent, false))
+    return MainHolder(
+      LayoutInflater.from(parent?.context).inflate(
+        R.layout.card_placemark,
+        parent,
+        false
+      )
+    )
   }
 
   override fun onBindViewHolder(holder: MainHolder, position: Int) {
     val placemark = placemarks[holder.adapterPosition]
-    holder.bind(placemark)
+    holder.bind(placemark, listener)
   }
 
   override fun getItemCount(): Int = placemarks.size
 
   class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(placemark: PlacemarkModel) {
+    fun bind(placemark: PlacemarkModel, listener: PlacemarkListener) {
       itemView.placemarkTitle.text = placemark.title
       itemView.description.text = placemark.description
+      itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
     }
   }
 }
