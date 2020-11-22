@@ -90,6 +90,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <ImageView
+            android:id="@+id/placemarkImage3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/placemarkImage4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <Button
             android:id="@+id/placemarkLocation"
             android:layout_width="match_parent"

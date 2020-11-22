@@ -53,6 +53,8 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
         when(index){
           0->placemarkImage.setImageBitmap(readImageFromPath(this, image))
           1->placemarkImage2.setImageBitmap(readImageFromPath(this, image))
+          2->placemarkImage3.setImageBitmap(readImageFromPath(this, image))
+          3->placemarkImage4.setImageBitmap(readImageFromPath(this, image))
         }
       }
       if (placemark.image.size>0) {
@@ -119,16 +121,20 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
             if(data.clipData != null){
 
                 val clipData:ClipData = data.clipData!!
-                if(clipData.itemCount >2){
+                if(clipData.itemCount >4){
                     Toast.makeText(applicationContext,"Maximum 2 images are allowed!",Toast.LENGTH_LONG).show()
                 }else{
                     placemark.image = mutableListOf()
                     placemarkImage2.setImageDrawable(null)
+                    placemarkImage3.setImageDrawable(null)
+                    placemarkImage4.setImageDrawable(null)
                     for(i in 0 until clipData.itemCount){
                         placemark.image.add(clipData.getItemAt(i).uri.toString())
                       when(i){
                         0->placemarkImage.setImageBitmap(readImageFromPath(this,clipData.getItemAt(i).uri.toString()))
                         1->placemarkImage2.setImageBitmap(readImageFromPath(this,clipData.getItemAt(i).uri.toString()))
+                        2->placemarkImage3.setImageBitmap(readImageFromPath(this,clipData.getItemAt(i).uri.toString()))
+                        3->placemarkImage4.setImageBitmap(readImageFromPath(this,clipData.getItemAt(i).uri.toString()))
                       }
                     }
                     chooseImage.setText(R.string.change_placemark_image)
@@ -136,6 +142,9 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
             }else if(data.getData()!=null) {
                 placemark.image = mutableListOf()
                 placemarkImage2.setImageDrawable(null)
+                placemarkImage3.setImageDrawable(null)
+                placemarkImage4.setImageDrawable(null)
+
                 placemark.image.add(data.getData().toString())
                 placemarkImage.setImageBitmap(readImage(this, resultCode, data))
                 chooseImage.setText(R.string.change_placemark_image)
