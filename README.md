@@ -14,3 +14,4 @@ In android studio open cloned directory, select appropriate virtual machine with
 ## Application details
 
 This simple Kotlin application allows for addition of interested locations with images, title and description. Further - animated splash screen, deletion and modification of inserted features is also implemented.
+* In order to select multiple (up to 4) images while adding a new hillfort, press and hold first selected image - you will be able to select several at the same time.
