@@ -28,6 +28,11 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
     }
   }
 
+  override fun delete(hillfort: HillfortModel) {
+    hillforts.remove(hillforts.find {it.id == hillfort.id})
+    serialize()
+  }
+
   override fun findAll(): MutableList<HillfortModel> {
     return hillforts
   }
