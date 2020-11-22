@@ -19,12 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PlacemarkActivity" >
+        <activity android:name=".activities.HillfortActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PlacemarkListActivity" />
+                android:value=".activities.HillfortListActivity" />
         </activity>
-        <activity android:name=".activities.PlacemarkListActivity">
+        <activity android:name=".activities.HillfortListActivity">
         </activity>
 
         <meta-data
@@ -36,7 +36,7 @@
             android:label="@string/title_activity_map" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PlacemarkActivity" />
+                android:value=".activities.HillfortActivity" />
         </activity>
     </application>
 

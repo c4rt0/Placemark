@@ -16,7 +16,7 @@ fun showImagePicker(parent: Activity, id: Int) {
   intent.action = Intent.ACTION_OPEN_DOCUMENT
   intent.addCategory(Intent.CATEGORY_OPENABLE)
   intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-  val chooser = Intent.createChooser(intent, R.string.select_placemark_image.toString())
+  val chooser = Intent.createChooser(intent, R.string.select_hillfort_image.toString())
   parent.startActivityForResult(chooser, id)
 }
 
