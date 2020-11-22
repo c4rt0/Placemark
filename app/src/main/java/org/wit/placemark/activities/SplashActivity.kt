@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         Timer().schedule(3000){
             this@SplashActivity.finish()
-            startActivity(intentFor<PlacemarkListActivity>())
+            startActivity(intentFor<HillfortListActivity>())
         }
     }
 }
