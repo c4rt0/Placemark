@@ -13,6 +13,9 @@ class HillfortMemStore : HillfortStore, AnkoLogger {
 
   val hillforts = ArrayList<HillfortModel>()
 
+  override fun delete(hillfort: HillfortModel) {
+  }
+
   override fun findAll(): List<HillfortModel> {
     return hillforts
   }

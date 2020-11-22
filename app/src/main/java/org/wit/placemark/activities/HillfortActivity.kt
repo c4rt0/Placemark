@@ -108,6 +108,18 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       R.id.item_cancel -> {
         finish()
       }
+      R.id.item_delete ->{
+        alert("You are deleting hillfort") {
+          title = "Warning"
+          positiveButton("Delete"){
+            app.hillforts.delete(hillfort)
+            Toast.makeText(applicationContext,"Selected hillfort is now deleted",Toast.LENGTH_LONG).show()
+            setResult(AppCompatActivity.RESULT_OK)
+            finish()
+          }
+          negativeButton("Cancel"){}
+        }.show()
+      }
     }
     return super.onOptionsItemSelected(item)
   }
