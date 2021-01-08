@@ -2,11 +2,11 @@ package org.wit.placemark.activities
 
 import android.content.ClipData
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.*
 import org.wit.placemark.R
@@ -14,8 +14,8 @@ import org.wit.placemark.helpers.readImage
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.Location
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.Location
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
@@ -133,7 +133,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
                 val clipData:ClipData = data.clipData!!
                 if(clipData.itemCount >4){
-                    Toast.makeText(applicationContext,"Maximum 2 images are allowed!",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Maximum 4 images are allowed!",Toast.LENGTH_LONG).show()
                 }else{
                     hillfort.image = mutableListOf()
                     hillfortImage2.setImageDrawable(null)

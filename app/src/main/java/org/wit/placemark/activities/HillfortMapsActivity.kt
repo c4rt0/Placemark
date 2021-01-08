@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import org.wit.placemark.R
 import kotlinx.android.synthetic.main.activity_hillfort_maps.*
+import org.wit.placemark.R
+import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.main.MainApp
 
-class HillfortMapsActivity : AppCompatActivity() {
+class HillfortMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     lateinit var app: MainApp
     lateinit var map: GoogleMap
@@ -30,6 +32,7 @@ class HillfortMapsActivity : AppCompatActivity() {
 
     fun configureMap() {
         map.uiSettings.setZoomControlsEnabled(true)
+        map.setOnMarkerClickListener(this)
         app.hillforts.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
@@ -37,6 +40,16 @@ class HillfortMapsActivity : AppCompatActivity() {
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
     }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val tag = marker.tag as Long
+        val placemark = app.hillforts.findById(tag)
+        currentTitle.text = placemark!!.title
+        currentDescription.text = placemark!!.description
+        currentImage.setImageBitmap(readImageFromPath(this, placemark.image[0]))
+        return true
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mapView.onDestroy()
