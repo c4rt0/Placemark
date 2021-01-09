@@ -1,4 +1,4 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.hillfort
 
 import android.content.Intent
 import org.jetbrains.anko.intentFor
@@ -6,6 +6,7 @@ import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.models.Location
+import org.wit.placemark.views.location.EditLocationView
 
 class HillfortPresenter(val view: HillfortView) {
 
@@ -56,7 +57,7 @@ class HillfortPresenter(val view: HillfortView) {
             location.lng = hillfort.lng
             location.zoom = hillfort.zoom
         }
-        view.startActivityForResult(view.intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
+        view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {

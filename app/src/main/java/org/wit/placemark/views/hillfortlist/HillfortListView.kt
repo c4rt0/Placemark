@@ -1,4 +1,4 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.hillfortlist
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,12 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
+import org.wit.placemark.activities.HillfortAdapter
+import org.wit.placemark.activities.HillfortListener
+import org.wit.placemark.activities.HillfortMapsActivity
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.views.hillfort.HillfortView
 
 class HillfortListView : AppCompatActivity(), HillfortListener {
 

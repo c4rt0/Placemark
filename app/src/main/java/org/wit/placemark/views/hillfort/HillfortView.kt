@@ -1,4 +1,4 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.hillfort
 
 import android.content.Intent
 import android.os.Bundle

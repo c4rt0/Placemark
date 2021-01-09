@@ -13,31 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.HillfortMapsActivity"></activity>
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity android:name=".views.hillfort.HillfortView" />
+        <activity android:name=".views.hillfortlist.HillfortListView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HillfortView">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.HillfortListView" />
-        </activity>
-        <activity android:name=".activities.HillfortListView"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.MapActivity"
-            android:label="@string/title_activity_map">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.HillfortView" />
-        </activity>
+            android:name=".views.location.EditLocationView"
+            android:label="@string/title_activity_map" />
     </application>
 
 </manifest>

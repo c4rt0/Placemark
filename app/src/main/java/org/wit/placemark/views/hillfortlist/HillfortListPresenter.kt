@@ -1,10 +1,12 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.hillfortlist
 
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import org.wit.placemark.activities.HillfortMapsActivity
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.views.hillfort.HillfortView
 
 class HillfortListPresenter(val view: HillfortListView) {
 
