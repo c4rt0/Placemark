@@ -17,4 +17,8 @@
     <string name="menu_mapOfHillforts">Map of Hillforts</string>
     <string name="hillfortPicture">Hillfort picture</string>
     <string name="hillfortTitle">Delete</string>
+    <string name="image1">Image1</string>
+    <string name="image2">Image2</string>
+    <string name="image3">Image3</string>
+    <string name="image4">Image4</string>
 </resources>
