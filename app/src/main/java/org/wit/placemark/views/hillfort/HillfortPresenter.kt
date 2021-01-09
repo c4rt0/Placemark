@@ -59,6 +59,11 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
+    fun cachePlacemark (title: String, description: String) {
+        hillfort.title = title;
+        hillfort.description = description
+    }
+
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
