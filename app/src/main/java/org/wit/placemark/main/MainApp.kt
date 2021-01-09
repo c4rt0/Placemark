@@ -4,6 +4,7 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.placemark.models.HillfortJSONStore
+import org.wit.placemark.models.HillfortMemStore
 import org.wit.placemark.models.HillfortStore
 
 class MainApp : Application(), AnkoLogger {
