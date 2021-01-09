@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Timer().schedule(3000){
             this@SplashScreenActivity.finish()
-            startActivity(intentFor<HillfortListActivity>())
+            startActivity(intentFor<HillfortListView>())
         }
     }
 }

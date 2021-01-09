@@ -2,7 +2,8 @@ package org.wit.placemark.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
@@ -13,7 +14,7 @@ import org.wit.placemark.R
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
 
-class HillfortListActivity : AppCompatActivity(), HillfortListener {
+class HillfortListView : AppCompatActivity(), HillfortListener {
 
   lateinit var app: MainApp
 

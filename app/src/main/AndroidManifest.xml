@@ -23,9 +23,9 @@
         <activity android:name=".activities.HillfortView">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.HillfortListActivity" />
+                android:value=".activities.HillfortListView" />
         </activity>
-        <activity android:name=".activities.HillfortListActivity"></activity>
+        <activity android:name=".activities.HillfortListView"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
