@@ -6,6 +6,7 @@ import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import org.jetbrains.anko.intentFor
 import org.wit.placemark.R
+import org.wit.placemark.views.hillfortlist.HillfortListView
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -20,7 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Timer().schedule(3000){
             this@SplashScreenActivity.finish()
-            startActivity(intentFor<HillfortListActivity>())
+            startActivity(intentFor<HillfortListView>())
         }
     }
 }
