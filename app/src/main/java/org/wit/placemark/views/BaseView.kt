@@ -1,17 +1,15 @@
 package org.wit.placemark.views
 
 import android.content.Intent
-
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import org.jetbrains.anko.AnkoLogger
-
 import org.wit.placemark.models.HillfortModel
-import org.wit.placemark.views.editlocation.EditLocationView
-import org.wit.placemark.views.map.HillfortMapView
 import org.wit.placemark.views.hillfort.HillfortView
 import org.wit.placemark.views.hillfortlist.HillfortListView
+import org.wit.placemark.views.location.EditLocationView
+import org.wit.placemark.views.map.HillfortMapView
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
@@ -20,7 +18,7 @@ enum class VIEW {
     LOCATION, PLACEMARK, MAPS, LIST
 }
 
-open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
+abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     var basePresenter: BasePresenter? = null
 
@@ -36,6 +34,12 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             intent.putExtra(key, value)
         }
         startActivityForResult(intent, code)
+    }
+
+    fun init(toolbar: Toolbar, upEnabled: Boolean) {
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 
     fun initPresenter(presenter: BasePresenter): BasePresenter {

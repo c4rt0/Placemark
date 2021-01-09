@@ -4,31 +4,42 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
 import org.wit.placemark.activities.HillfortAdapter
 import org.wit.placemark.activities.HillfortListener
+import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
-import org.wit.placemark.views.BaseView
+import org.wit.placemark.views.hillfort.HillfortView
+import org.wit.placemark.views.map.HillfortMapView
 
-class HillfortListView :  BaseView(), HillfortListener {
+class HillfortListView : AppCompatActivity(), HillfortListener {
 
-  lateinit var presenter: HillfortListPresenter
+  lateinit var app: MainApp
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort_list)
-    setSupportActionBar(toolbar)
+    app = application as MainApp
 
-    presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
+    toolbar.title = title
+    setSupportActionBar(toolbar)
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    presenter.loadHillforts()
+    loadHillforts()
   }
 
-  override fun showHillforts(hillforts: List<HillfortModel>) {
+  private fun loadHillforts() {
+    showHillforts(app.hillforts.findAll())
+  }
+
+  fun showHillforts (hillforts: List<HillfortModel>) {
     recyclerView.adapter = HillfortAdapter(hillforts, this)
     recyclerView.adapter?.notifyDataSetChanged()
   }
@@ -40,18 +51,18 @@ class HillfortListView :  BaseView(), HillfortListener {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
-      R.id.item_add -> presenter.doAddHillfort()
-      R.id.item_map -> presenter.doShowHillfortsMap()
+      R.id.item_add -> startActivityForResult<HillfortView>(200)
+      R.id.item_map -> startActivity<HillfortMapView>()
     }
     return super.onOptionsItemSelected(item)
   }
 
   override fun onHillfortClick(hillfort: HillfortModel) {
-    presenter.doEditHillfort(hillfort)
+    startActivityForResult(intentFor<HillfortView>().putExtra("hillfort_edit", hillfort), 0)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    presenter.loadHillforts()
+    loadHillforts()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }
