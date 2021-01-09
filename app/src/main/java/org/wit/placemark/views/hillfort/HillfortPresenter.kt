@@ -3,12 +3,15 @@ package org.wit.placemark.views.hillfort
 import android.annotation.SuppressLint
 import android.content.Intent
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.placemark.helpers.checkLocationPermissions
+import org.wit.placemark.helpers.createDefaultLocationRequest
 import org.wit.placemark.helpers.isPermissionGranted
 import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.models.HillfortModel
@@ -16,6 +19,8 @@ import org.wit.placemark.models.Location
 import org.wit.placemark.views.*
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
+
+    val locationRequest = createDefaultLocationRequest()
 
     var hillfort = HillfortModel()
     var defaultLocation = Location(52.245696, -7.139102, 15f)
@@ -39,6 +44,21 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     fun doSetCurrentLocation() {
         locationService.lastLocation.addOnSuccessListener {
             locationUpdate(it.latitude, it.longitude)
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun doResartLocationUpdates() {
+        var locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null && locationResult.locations != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(l.latitude, l.longitude)
+                }
+            }
+        }
+        if (!edit) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
         }
     }
 
