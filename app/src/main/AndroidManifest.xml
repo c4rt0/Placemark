@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HillfortActivity">
+        <activity android:name=".activities.HillfortView">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.HillfortListActivity" />
@@ -36,7 +36,7 @@
             android:label="@string/title_activity_map">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.HillfortActivity" />
+                android:value=".activities.HillfortView" />
         </activity>
     </application>
 
