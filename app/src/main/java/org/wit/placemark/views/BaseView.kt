@@ -18,7 +18,7 @@ enum class VIEW {
     LOCATION, PLACEMARK, MAPS, LIST
 }
 
-open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
+abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     var basePresenter: BasePresenter? = null
 
@@ -34,6 +34,12 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             intent.putExtra(key, value)
         }
         startActivityForResult(intent, code)
+    }
+
+    fun init(toolbar: Toolbar, upEnabled: Boolean) {
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 
     fun initPresenter(presenter: BasePresenter): BasePresenter {

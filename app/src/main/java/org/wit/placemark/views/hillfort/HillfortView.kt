@@ -43,7 +43,6 @@ class HillfortView : BaseView(), AnkoLogger {
       presenter.doSetLocation()
     }
   }
-// modified to read lat long values
   override fun showHillfort(hillfort: HillfortModel) {
     if (hillfortTitle.text.isEmpty()) hillfortTitle.setText(hillfort.title)
     if (description.text.isEmpty())  description.setText(hillfort.description)
@@ -52,10 +51,11 @@ class HillfortView : BaseView(), AnkoLogger {
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }
-// Here pulling lat long values
     lat.setText("%.6f".format(hillfort.lat))
     lng.setText("%.6f".format(hillfort.lng))
   }
+// modified to read lat long values
+
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_hillfort, menu)
