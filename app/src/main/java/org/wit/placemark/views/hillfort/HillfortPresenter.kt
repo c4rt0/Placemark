@@ -6,7 +6,7 @@ import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.models.Location
-import org.wit.placemark.views.location.EditLocationView
+import org.wit.placemark.views.editlocation.EditLocationView
 
 class HillfortPresenter(val view: HillfortView) {
 

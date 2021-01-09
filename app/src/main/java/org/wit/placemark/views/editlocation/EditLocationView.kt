@@ -1,4 +1,4 @@
-package org.wit.placemark.views.location
+package org.wit.placemark.views.editlocation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -3,10 +3,10 @@ package org.wit.placemark.views.hillfortlist
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
-import org.wit.placemark.activities.HillfortMapsActivity
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.views.hillfort.HillfortView
+import org.wit.placemark.views.map.HillfortMapView
 
 class HillfortListPresenter(val view: HillfortListView) {
 
@@ -27,6 +27,6 @@ class HillfortListPresenter(val view: HillfortListView) {
     }
 
     fun doShowHillfortsMap() {
-        view.startActivity<HillfortMapsActivity>()
+        view.startActivity<HillfortMapView>()
     }
 }

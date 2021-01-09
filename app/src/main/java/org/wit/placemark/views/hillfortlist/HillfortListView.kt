@@ -13,7 +13,7 @@ import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
 import org.wit.placemark.activities.HillfortAdapter
 import org.wit.placemark.activities.HillfortListener
-import org.wit.placemark.activities.HillfortMapsActivity
+import org.wit.placemark.views.map.HillfortMapView
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.views.hillfort.HillfortView
@@ -52,7 +52,7 @@ class HillfortListView : AppCompatActivity(), HillfortListener {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       R.id.item_add -> startActivityForResult<HillfortView>(200)
-      R.id.item_map -> startActivity<HillfortMapsActivity>()
+      R.id.item_map -> startActivity<HillfortMapView>()
     }
     return super.onOptionsItemSelected(item)
   }
