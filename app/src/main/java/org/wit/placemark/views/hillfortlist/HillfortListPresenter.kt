@@ -1,32 +1,25 @@
 package org.wit.placemark.views.hillfortlist
 
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
-import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.HillfortModel
-import org.wit.placemark.views.hillfort.HillfortView
-import org.wit.placemark.views.map.HillfortMapView
+import org.wit.placemark.views.BasePresenter
+import org.wit.placemark.views.BaseView
+import org.wit.placemark.views.VIEW
 
-class HillfortListPresenter(val view: HillfortListView) {
-
-    var app: MainApp
-
-    init {
-        app = view.application as MainApp
-    }
-
-    fun getHillforts() = app.hillforts.findAll()
+class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doAddHillfort() {
-        view.startActivityForResult<HillfortView>(0)
+        view?.navigateTo(VIEW.PLACEMARK)
     }
 
     fun doEditHillfort(hillfort: HillfortModel) {
-        view.startActivityForResult(view.intentFor<HillfortView>().putExtra("hillfort_edit", hillfort), 0)
+        view?.navigateTo(VIEW.PLACEMARK, 0, "hillfort_edit", hillfort)
     }
 
     fun doShowHillfortsMap() {
-        view.startActivity<HillfortMapView>()
+        view?.navigateTo(VIEW.MAPS)
+    }
+
+    fun loadHillforts() {
+        view?.showHillforts(app.hillforts.findAll())
     }
 }
