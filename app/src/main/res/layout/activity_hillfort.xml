@@ -69,23 +69,6 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/gridLayout2" />
 
-      <Button
-          android:id="@+id/btnAdd"
-          android:layout_width="379dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="8dp"
-          android:background="@color/colorAccent"
-          android:paddingTop="8dp"
-          android:paddingBottom="8dp"
-          android:stateListAnimator="@null"
-          android:text="@string/button_addHillfort"
-          android:textColor="@color/colorPrimary"
-          android:textSize="16sp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/hillfortLocation" />
-
       <EditText
           android:id="@+id/description"
           android:layout_width="379dp"
@@ -100,7 +83,8 @@
           android:textSize="14sp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/hillfortTitle" />
+          app:layout_constraintTop_toBottomOf="@+id/hillfortTitle"
+          android:autofillHints="" />
 
       <EditText
           android:id="@+id/hillfortTitle"
@@ -132,6 +116,7 @@
             android:id="@+id/hillfortImage"
             android:layout_width="190dp"
             android:layout_height="160dp"
+            android:contentDescription="@string/image1"
             app:layout_column="0"
             app:layout_row="0"
             app:srcCompat="@mipmap/ic_launcher" />
@@ -140,12 +125,14 @@
             android:id="@+id/hillfortImage2"
             android:layout_width="190dp"
             android:layout_height="160dp"
+            android:contentDescription="@string/image2"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/hillfortImage3"
             android:layout_width="190dp"
             android:layout_height="160dp"
+            android:contentDescription="@string/image3"
             app:layout_column="0"
             app:layout_row="1"
             app:srcCompat="@mipmap/ic_launcher" />
@@ -154,6 +141,7 @@
             android:id="@+id/hillfortImage4"
             android:layout_width="190dp"
             android:layout_height="160dp"
+            android:contentDescription="@string/image4"
             app:layout_column="1"
             app:layout_row="1"
             app:srcCompat="@mipmap/ic_launcher" />
