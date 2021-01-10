@@ -1,4 +1,4 @@
-package org.wit.placemark.models
+package org.wit.placemark.models.json
 
 import android.content.Context
 import com.google.gson.Gson
@@ -8,6 +8,8 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.placemark.helpers.exists
 import org.wit.placemark.helpers.read
 import org.wit.placemark.helpers.write
+import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.HillfortStore
 import java.util.*
 
 val JSON_FILE = "hillforts.json"

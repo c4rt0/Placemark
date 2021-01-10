@@ -1,7 +1,9 @@
-package org.wit.placemark.models
+package org.wit.placemark.models.mem
 
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.HillfortStore
 
 var lastId = 0L
 

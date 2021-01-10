@@ -73,4 +73,5 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     open fun showHillforts(hillforts: List<HillfortModel>) {}
     open fun showProgress() {}
     open fun hideProgress() {}
+    open fun showLocation(latitude : Double, longitude : Double) {}
 }
