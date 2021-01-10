@@ -81,7 +81,7 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
 
   override fun onResume() {
     super.onResume()
-//    mapView.onResume()
+    mapView.onResume()
   }
 
   override fun onSaveInstanceState(outState: Bundle) {
