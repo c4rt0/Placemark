@@ -1,5 +1,6 @@
 package org.wit.placemark.views.hillfortlist
 
+import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.wit.placemark.models.HillfortModel
@@ -31,6 +32,7 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
         view?.navigateTo(VIEW.LOGIN)
     }
 
