@@ -32,17 +32,6 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
     }
   }
 
-  override fun findById(id:Long) : HillfortModel? {
-    val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
-    return foundHillfort
-  }
-
-  override fun delete(hillfort: HillfortModel) {
-    val foundHillfort: HillfortModel? = hillforts.find { it.id == hillfort.id }
-    hillforts.remove(foundHillfort)
-    serialize()
-  }
-
   override fun findAll(): MutableList<HillfortModel> {
     return hillforts
   }
@@ -53,17 +42,27 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
     serialize()
   }
 
-
   override fun update(hillfort: HillfortModel) {
-    hillforts.find {it.id == hillfort.id}.apply {
-      this?.title = hillfort.title
-      this?.description = hillfort.description
-      this?.image = hillfort.image
-      this?.lat = hillfort.lat
-      this?.lng = hillfort.lng
-      this?.zoom = hillfort.zoom
+    val hillfortsList = findAll() as ArrayList<HillfortModel>
+    var foundHillfort: HillfortModel? = hillfortsList.find { p -> p.id == hillfort.id }
+    if (foundHillfort != null) {
+      foundHillfort.title = hillfort.title
+      foundHillfort.description = hillfort.description
+      foundHillfort.image = hillfort.image
+      foundHillfort.location = hillfort.location
     }
     serialize()
+  }
+
+  override fun delete(hillfort: HillfortModel) {
+    val foundHillfort: HillfortModel? = hillforts.find { it.id == hillfort.id }
+    hillforts.remove(foundHillfort)
+    serialize()
+  }
+
+  override fun findById(id:Long) : HillfortModel? {
+    val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
+    return foundHillfort
   }
 
   private fun serialize() {
@@ -74,5 +73,9 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
   private fun deserialize() {
     val jsonString = read(context, JSON_FILE)
     hillforts = Gson().fromJson(jsonString, listType)
+  }
+
+  override fun clear() {
+    hillforts.clear()
   }
 }

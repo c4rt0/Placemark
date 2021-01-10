@@ -4,7 +4,7 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.placemark.models.HillfortStore
-import org.wit.placemark.room.HillfortStoreRoom
+import org.wit.placemark.models.firebase.HillfortFireStore
 
 class MainApp : Application(), AnkoLogger {
 
@@ -12,7 +12,9 @@ class MainApp : Application(), AnkoLogger {
 
   override fun onCreate() {
     super.onCreate()
-    hillforts = HillfortStoreRoom(applicationContext)
+    //hillfort = HillfortJSONStore(applicationContext)
+    //hillfort = HillfortStoreRoom(applicationContext)
+    hillforts = HillfortFireStore(applicationContext)
     info("Hillfort started")
   }
 }

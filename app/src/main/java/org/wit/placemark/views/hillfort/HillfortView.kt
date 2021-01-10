@@ -11,6 +11,7 @@ import org.jetbrains.anko.toast
 import org.wit.placemark.R
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.Location
 import org.wit.placemark.views.BaseView
 
 class HillfortView : BaseView(), AnkoLogger {
@@ -51,8 +52,12 @@ class HillfortView : BaseView(), AnkoLogger {
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }
-    lat.setText("%.6f".format(hillfort.lat))
-    lng.setText("%.6f".format(hillfort.lng))
+    this.showLocation(hillfort.location)
+  }
+
+  override fun showLocation (loc : Location) {
+    lat.setText("%.6f".format(loc.lat))
+    lng.setText("%.6f".format(loc.lng))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

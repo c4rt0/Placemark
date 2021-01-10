@@ -7,6 +7,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_map.*
 import org.wit.placemark.R
+import org.wit.placemark.models.Location
 import org.wit.placemark.views.BaseView
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
@@ -28,13 +29,18 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     }
   }
 
+  override fun showLocation(location: Location) {
+    lat.setText("%.6f".format(location.lat))
+    lng.setText("%.6f".format(location.lng))
+  }
+
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_edit_location, menu)
     return super.onCreateOptionsMenu(menu)
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item.itemId) {
+    when (item?.itemId) {
       R.id.item_save -> {
         presenter.doSave()
       }
@@ -81,10 +87,5 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
     mapView.onSaveInstanceState(outState)
-  }
-
-  override fun showLocation(latitude : Double, longitude : Double) {
-    lat.setText("%.6f".format(latitude))
-    lng.setText("%.6f".format(longitude))
   }
 }

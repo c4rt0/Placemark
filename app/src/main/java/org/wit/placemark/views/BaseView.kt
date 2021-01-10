@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.Location
 import org.wit.placemark.views.hillfort.HillfortView
 import org.wit.placemark.views.hillfortlist.HillfortListView
 import org.wit.placemark.views.location.EditLocationView
@@ -80,5 +81,5 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     open fun showHillforts(hillforts: List<HillfortModel>) {}
     open fun showProgress() {}
     open fun hideProgress() {}
-    open fun showLocation(latitude : Double, longitude : Double) {}
+    open fun showLocation(location : Location) {}
 }
