@@ -1,11 +1,11 @@
 package org.wit.placemark.views.map
 
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_hillfort_maps.*
 import org.wit.placemark.R
-import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.views.BaseView
 
@@ -32,7 +32,7 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     override fun showHillfort(hillfort: HillfortModel) {
         currentTitle.text = hillfort.title
         currentDescription.text = hillfort.description
-        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(currentImage);
     }
 
     override fun showHillforts(hillforts: List<HillfortModel>) {

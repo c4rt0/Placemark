@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.placemark.R
-import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.models.HillfortModel
 
 interface HillfortListener {
@@ -40,8 +40,7 @@ class HillfortAdapter constructor(
     fun bind(hillfort: HillfortModel, listener: HillfortListener) {
       itemView.hillfortTitle.text = hillfort.title
       itemView.description.text = hillfort.description
-//      if(hillfort.image.size>0)
-      itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
+      Glide.with(itemView.context).load(hillfort.image).into(itemView.imageIcon);
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
     }
   }

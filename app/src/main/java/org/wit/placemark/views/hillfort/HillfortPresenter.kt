@@ -16,8 +16,8 @@ import org.wit.placemark.helpers.checkLocationPermissions
 import org.wit.placemark.helpers.createDefaultLocationRequest
 import org.wit.placemark.helpers.isPermissionGranted
 import org.wit.placemark.helpers.showImagePicker
-import org.wit.placemark.models.Location
 import org.wit.placemark.models.HillfortModel
+import org.wit.placemark.models.Location
 import org.wit.placemark.views.*
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
@@ -27,6 +27,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false;
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
+    var locationManualyChanged = false;
     val locationRequest = createDefaultLocationRequest()
 
     init {
@@ -126,6 +127,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doSetLocation() {
+        locationManualyChanged = true;
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(hillfort.location.lat, hillfort.location.lng, hillfort.location.zoom))
     }
 
@@ -142,4 +144,5 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
             }
         }
     }
+
 }
