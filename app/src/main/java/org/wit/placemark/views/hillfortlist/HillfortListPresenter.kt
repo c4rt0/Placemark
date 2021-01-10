@@ -22,4 +22,5 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     fun loadHillforts() {
         view?.showHillforts(app.hillforts.findAll())
     }
+
 }
