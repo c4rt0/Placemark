@@ -9,13 +9,14 @@ import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.views.hillfort.HillfortView
 import org.wit.placemark.views.hillfortlist.HillfortListView
 import org.wit.placemark.views.location.EditLocationView
+import org.wit.placemark.views.login.LoginView
 import org.wit.placemark.views.map.HillfortMapView
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
 
 enum class VIEW {
-    LOCATION, HILLFORT, MAPS, LIST
+    LOCATION, HILLFORT, MAPS, LIST,  LOGIN
 }
 
 abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -29,6 +30,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.HILLFORT -> intent = Intent(this, HillfortView::class.java)
             VIEW.MAPS -> intent = Intent(this, HillfortMapView::class.java)
             VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
+            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
