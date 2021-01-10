@@ -1,5 +1,7 @@
 package org.wit.placemark.views.hillfortlist
 
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import org.wit.placemark.models.HillfortModel
 import org.wit.placemark.views.BasePresenter
 import org.wit.placemark.views.BaseView
@@ -8,11 +10,11 @@ import org.wit.placemark.views.VIEW
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doAddHillfort() {
-        view?.navigateTo(VIEW.PLACEMARK)
+        view?.navigateTo(VIEW.HILLFORT)
     }
 
     fun doEditHillfort(hillfort: HillfortModel) {
-        view?.navigateTo(VIEW.PLACEMARK, 0, "hillfort_edit", hillfort)
+        view?.navigateTo(VIEW.HILLFORT, 0, "hillfort_edit", hillfort)
     }
 
     fun doShowHillfortsMap() {
@@ -20,7 +22,12 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadHillforts() {
-        view?.showHillforts(app.hillforts.findAll())
+        doAsync {
+            val placemarks = app.hillforts.findAll()
+            uiThread {
+                view?.showHillforts(placemarks)
+            }
+        }
     }
 
 }

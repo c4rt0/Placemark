@@ -54,8 +54,6 @@ class HillfortView : BaseView(), AnkoLogger {
     lat.setText("%.6f".format(hillfort.lat))
     lng.setText("%.6f".format(hillfort.lng))
   }
-// modified to read lat long values
-
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_hillfort, menu)
