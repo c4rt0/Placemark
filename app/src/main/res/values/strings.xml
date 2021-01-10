@@ -12,7 +12,7 @@
     <string name="change_hillfort_image">Change hillfort image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
-    <string name="menu_deleteHillFort">Delete</string>
+    <string name="menu_delete">Delete</string>
     <string name="menu_mapOfHillforts">Map of Hillforts</string>
     <string name="hillfortPicture">Hillfort picture</string>
     <string name="hillfortTitle">Delete</string>
@@ -23,7 +23,7 @@
     <string name="menu_saveHillFort">Save</string>
     <string name="zero">00.000000</string>
     <string name="location">Location</string>
-    <string name="google_maps_key">Your KEY here</string>
+    <string name="google_maps_key">YourKeyHere</string>
     <string name="title_activity_hillfort_list">Hillforts</string>
     <string name="title_activity_hillfort">Hillfort</string>
     <string name="title_activity_location">Hillfort</string>

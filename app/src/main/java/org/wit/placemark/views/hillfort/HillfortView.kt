@@ -110,7 +110,7 @@ class HillfortView : BaseView(), AnkoLogger {
 
   override fun onResume() {
     super.onResume()
-    mapView.onResume()
+//    mapView.onResume()
     presenter.doResartLocationUpdates()
   }
 
