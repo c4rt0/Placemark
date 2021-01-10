@@ -20,10 +20,10 @@ After version v1.4.1 Multiple images section was removed - this should be fixed 
 V2.0.2 Uses firebase database, firebase authentication and firebase data storage. On top of that number of other functionality was implemented as per description of tag releases.
 In this version location is based on a live feed of GPS coordinates.
 Future development goals:
-v2.0.3 - will improve GPS navigation and map settings
-v2.1 Multiple images,
-v2.2 Rating
-v2.3 Mark as favourite
-v2.4 Search
-v2.5 Images directly from camera
-v2.6 Livedata
+* v2.0.3 - will improve GPS navigation and map settings
+* v2.1 Multiple images,
+* v2.2 Rating
+* v2.3 Mark as favourite
+* v2.4 Search
+* v2.5 Images directly from camera
+* v2.6 Livedata

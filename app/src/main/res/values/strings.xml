@@ -23,7 +23,7 @@
     <string name="menu_saveHillFort">Save</string>
     <string name="zero">00.000000</string>
     <string name="location">Location</string>
-    <string name="google_maps_key">AIzaSyCtLZA-YiwlPzYXs49hytB365DUQ6nrdm8</string>
+    <string name="google_maps_key">YourKeyHere</string>
     <string name="title_activity_hillfort_list">Hillforts</string>
     <string name="title_activity_hillfort">Hillfort</string>
     <string name="title_activity_location">Hillfort</string>
